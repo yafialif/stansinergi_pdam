@@ -184,7 +184,7 @@ class DataMeteranPelangganController extends Controller
 		}
 
 		// Output file PDF
-		$pdf->Output('bukti_pembayaran.pdf', 'I');
+		$pdf->Output('bukti_pembayaran_' . $tagihan->nama . '.pdf', 'D');
 	}
 }
 class CustomTCPDF extends TCPDF
