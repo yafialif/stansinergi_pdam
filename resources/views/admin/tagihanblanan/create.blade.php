@@ -107,12 +107,13 @@ $(document).ready(function() {
 $(document).ready(function() {
   // Tangkap peristiwa perubahan pada elemen select
   var start_meteran = 0;
+  const baseUrl = window.location.origin;
   $('.js-example-basic-single').on('change', function() {
     // Ambil nilai yang dipilih
     var selectedValue = $(this).val();
     console.log(selectedValue);
 var settings = {
-  "url": "http://127.0.0.1:8000/api/gatdatapelanggan/"+selectedValue,
+  "url": baseUrl+"/api/gatdatapelanggan/"+selectedValue,
   "method": "GET",
   "timeout": 0,
   "headers": {
@@ -141,27 +142,38 @@ $.ajax(settings).done(function (response) {
 function hitung(){
 
     // Ambil nilai yang dipilih
+    var start_meteran = $('#awal_meteran')[0].value;
     var selectedValue = $('#akhir_meteran')[0].value;
     var total_meteran = selectedValue - start_meteran;
     var biaya = 0;
     var harga = 0;
     var tunggakan_sebelumnya = $("#tunggakan_sebelumnya")[0].value;
-    if (total_meteran >= 0 && total_meteran <= 10) {
-  biaya = total_meteran * 20000;
-  harga = 20000;
-} else if (total_meteran >= 11 && total_meteran <= 40) {
-  biaya = total_meteran * 500;
-   harga = 500;
-} else if (total_meteran >= 41 && total_meteran <= 70) {
-  biaya = total_meteran * 3000;
-   harga = 3000;
-} else if (total_meteran >= 71) {
-  biaya = total_meteran * 5000;
-   harga = 5000;
-}
-$("#harga")[0].value = harga;
+    let cost = 0;
+    var price1="",price2="",price3="",price4="";
+    if (total_meteran <= 10) {
+    cost = 20000;
+    price1 = "20.000";
+  } else if (total_meteran <= 40) {
+    const additionalM3 = total_meteran - 10;
+    cost = 20000 + additionalM3 * 500;
+    price2 = "20.000 + ("+additionalM3+" x 500)";
+  } else if (total_meteran <= 70) {
+    const additionalM3 = total_meteran - 40;
+    cost = 20000 + 30 * 500 + additionalM3 * 3000;
+    price3 = "20.000 + (30 x 500) + ("+additionalM3+" x 3000)";
+  } else {
+   
+    const additionalM3 = total_meteran - 70;
+     price4 = "20.000 + (30 x 500) + (30 x 3000) + ("+additionalM3+" x 5000)";
+    cost = 20000 + 30 * 500 + 30 * 3000 + additionalM3 * 5000;
+  }
+  
+//   return cost;
+
+console.log(price1);
+$("#harga")[0].value = price1+price2+price3+price4;
 $("#total_pemakaian")[0].value = total_meteran;
-$("#total_tagihan_bulan_ini")[0].value = total_meteran*harga;
+$("#total_tagihan_bulan_ini")[0].value = cost;
 var diskon = $("#diskon")[0].value;
 var total_tagihan = parseInt((total_meteran*harga))+parseInt(tunggakan_sebelumnya);
 if(diskon>=1){

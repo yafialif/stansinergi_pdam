@@ -1,90 +1,94 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solid Template</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css">
+	<script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+							<a href="#">
+								<img class="header-logo-image" src="{{ asset('images/logo_stan.png') }}" width="50px" alt="Logo">
+                            </a>
+                        </h1>
+                    </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Bumdes Sinergi Babakan Purwakarta
-                </div>
-
             </div>
-        </div>
-    </body>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+						<div class="hero-copy">
+	                        <h1 class="hero-title mt-0">Aplikasi Tagihan Air PDAM</h1>
+	                        <p class="hero-paragraph">Bumdes desa babakan sinergi</p>
+	                        <div class="hero-cta"><a class="button button-primary" href="#">Login</a></div>
+						</div>
+						<div class="hero-figure anime-element">
+							<svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
+								<rect width="528" height="396" style="fill:transparent;" />
+							</svg>
+							<div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+							<div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+							<div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+							<div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+							<div class="hero-figure-box hero-figure-box-05"></div>
+							<div class="hero-figure-box hero-figure-box-06"></div>
+							<div class="hero-figure-box hero-figure-box-07"></div>
+							<div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+							<div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+							<div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+						</div>
+                    </div>
+                </div>
+            </section>
+
+			<section class="cta section">
+				<div class="container">
+					<div class="cta-inner section-inner">
+						<h3 class="section-title mt-0">Support By STAN Sinergi</h3>
+						<div class="cta-cta">
+							<div class="logo">
+                    <img src="{{ asset('images/logo_stan.png') }}" width="100px" alt="Example Image">
+                </div>
+						</div>
+					</div>
+				</div>
+			</section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+						<a href="#">
+							<img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
+						</a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li>
+                            <a href="#">Contact Support</a>
+                        </li>
+                       
+                    </ul>
+                    
+                    <div class="footer-copyright">&copy; 2023 Yookoding, all rights reserved</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="dist/js/main.min.js"></script>
+</body>
 </html>

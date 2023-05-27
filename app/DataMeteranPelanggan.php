@@ -8,21 +8,25 @@ use Laraveldaily\Quickadmin\Observers\UserActionsObserver;
 
 
 
-class DataMeteranPelanggan extends Model {
+class DataMeteranPelanggan extends Model
+{
 
-    
 
-    
+
+
 
     protected $table    = 'datameteranpelanggan';
-    
+
     protected $fillable = [
-          'nama',
-          'no_meteran',
-          'start_meteran',
-          'catatan'
+        'nama',
+        'no_meteran',
+        'start_meteran',
+        'rw',
+        'rt',
+        'alamat',
+        'catatan'
     ];
-    
+
 
     public static function boot()
     {
@@ -30,8 +34,4 @@ class DataMeteranPelanggan extends Model {
 
         DataMeteranPelanggan::observe(new UserActionsObserver);
     }
-    
-    
-    
-    
 }
