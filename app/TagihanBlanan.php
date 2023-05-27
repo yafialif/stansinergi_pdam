@@ -4,16 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laraveldaily\Quickadmin\Observers\UserActionsObserver;
-
+use datameteranpelanggan;
 
 
 
 class TagihanBlanan extends Model
 {
-
-
-
-
 
     protected $table    = 'tagihanblanan';
 

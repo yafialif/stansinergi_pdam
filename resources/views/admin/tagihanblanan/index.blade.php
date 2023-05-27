@@ -80,9 +80,16 @@
                     </button>
                 </div>
             </div>
+            <?php
+            if(Auth::user()->role_id <=2){
+             ?>
             {!! Form::open(['route' => config('quickadmin.route').'.tagihanblanan.massDelete', 'method' => 'post', 'id' => 'massDelete']) !!}
                 <input type="hidden" id="send" name="toDelete">
             {!! Form::close() !!}
+            <?php
+            }
+            ?>
+
         </div>
 	</div>
 @else
