@@ -58,7 +58,7 @@
 </div><div class="form-group">
     {!! Form::label('total_tagihan_bulan_ini', 'Total Tagihan Bulan ini*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
-        {!! Form::text('total_tagihan_bulan_ini', old('total_tagihan_bulan_ini'), array('class'=>'form-control')) !!}
+        {!! Form::text('total_tagihan_bulan_ini', old('total_tagihan_bulan_ini'), array('class'=>'form-control','readonly'=>'true')) !!}
         
     </div>
 </div><div class="form-group">
