@@ -93,7 +93,7 @@
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
-                            <a href="#">Contact Support</a>
+                            <a href="https://api.whatsapp.com/send/?phone=085706553390">Contact Support</a>
                         </li>
                        
                     </ul>

@@ -118,7 +118,7 @@ class DataMeteranPelangganController extends Controller
 	public function getDataPelanggan($id)
 	{
 		$start_meteran = 0;
-		$tunggakan = 5000;
+		$tunggakan = 0;
 		$tagihanbulanan = TagihanBlanan::where('datameteranpelanggan_id', '=', $id)
 			->orderBy('created_at', 'desc')
 			->limit(1)

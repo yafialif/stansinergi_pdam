@@ -64,7 +64,7 @@
 </div><div class="form-group">
     {!! Form::label('tunggakan_sebelumnya', 'Tunggakan Sebelumnya*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
-        {!! Form::text('tunggakan_sebelumnya', old('tunggakan_sebelumnya'), array('class'=>'form-control')) !!}
+        {!! Form::text('tunggakan_sebelumnya', old('tunggakan_sebelumnya'), array('class'=>'form-control','readonly'=>'true')) !!}
         
     </div>
 </div><div class="form-group">
@@ -76,7 +76,7 @@
 </div><div class="form-group">
     {!! Form::label('total_tagihan', 'Total Tagihan', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
-        {!! Form::text('total_tagihan', old('total_tagihan'), array('class'=>'form-control')) !!}
+        {!! Form::text('total_tagihan', old('total_tagihan'), array('class'=>'form-control','readonly'=>'true')) !!}
         
     </div>
 </div><div class="form-group">
@@ -138,7 +138,7 @@ var settings = {
 };
 // on keyup count meteran
 $.ajax(settings).done(function (response) {
-//   console.log(response);
+  console.log(response);
     start_meteran = response.start_meteran;
   $("#awal_meteran")[0].value = response.start_meteran;
   $("#tunggakan_sebelumnya")[0].value = response.tunggakan;
