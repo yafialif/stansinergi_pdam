@@ -83,7 +83,7 @@
     {!! Form::label('status_tagihan', 'Status Tagihan*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {{-- {!! Form::text('status_tagihan', old('status_tagihan'), array('class'=>'form-control')) !!} --}}
-        {!! Form::select('status_tagihan', ['' => 'Pilih salah satu','lunas' => 'Lunas', 'belum_lunas' => 'Belum Lunas'], old('status_tagihan'), ['class' => 'form-control']) !!}
+        {!! Form::select('status_tagihan', ['' => 'Pilih salah satu','lunas' => 'Lunas', 'belum_lunas' => 'Belum Lunas'], old('status_tagihan'), ['class' => 'form-control','required'=>'true']) !!}
 
     </div>
 </div><div class="form-group">
