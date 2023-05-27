@@ -10,6 +10,7 @@
             <div class="caption">{{ trans('quickadmin::templates.templates-view_index-list') }}</div>
         </div>
         <div class="portlet-body">
+            <div class="table-responsive">
             <table class="table table-striped table-hover table-responsive datatable" id="datatable">
                 <thead>
                     <tr>
@@ -71,6 +72,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <button class="btn btn-danger" id="delete">
