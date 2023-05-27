@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::get('/api/gatdatapelanggan/{id}', 'Admin\DataMeteranPelangganController@getDataPelanggan');
-Route::get('/admin/cetakresi/{id}', 'Admin\DataMeteranPelangganController@cetakresi');
+Route::get('/admin/cetakresi/{id}', 'Admin\DataMeteranPelangganController@cetakresi')->name("cetakresi");
 
 Route::group(array('prefix' => 'api', 'middleware' => 'cors'), function () {
     Route::get('gatdatapelanggan/{id}', 'Admin\DataMeteranPelangganController@getDataPelanggan');

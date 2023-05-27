@@ -31,9 +31,24 @@
                 <div class="container">
                     <div class="hero-inner">
 						<div class="hero-copy">
-	                        <h1 class="hero-title mt-0">Aplikasi Tagihan Air PDAM</h1>
+	                        <h1 class="hero-title mt-0">Aplikasi Tagihan Air</h1>
 	                        <p class="hero-paragraph">Bumdes desa babakan sinergi</p>
-	                        <div class="hero-cta"><a class="button button-primary" href="#">Login</a></div>
+	                        <div class="hero-cta">
+                                 @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a class="button button-primary" href="{{ url('/admin') }}">Dashboard</a>
+                    @else
+                        <a class="button button-primary" href="{{ route('login') }}">Login</a>
+                        {{-- @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif --}}
+                    @endauth
+                </div>
+            @endif
+                               
+                            
+                            </div>
 						</div>
 						<div class="hero-figure anime-element">
 							<svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">

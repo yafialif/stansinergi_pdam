@@ -2,7 +2,7 @@
 
 @section('content')
 
-<p>{!! link_to_route(config('quickadmin.route').'.tagihanblanan.create', trans('quickadmin::templates.templates-view_index-add_new') , null, array('class' => 'btn btn-success')) !!}</p>
+<p>{!! link_to_route(config('quickadmin.route').'.tagihanblanan.create', 'Tambah tagihan baru' , null, array('class' => 'btn btn-success')) !!}</p>
 
 @if ($tagihanblanan->count())
     <div class="portlet box green">
@@ -16,17 +16,19 @@
                         <th>
                             {!! Form::checkbox('delete_all',1,false,['class' => 'mass']) !!}
                         </th>
+                        <th>Nama Petugas</th>
                         <th>Nama Pelanggan</th>
 <th>Meteran Sebelumnya</th>
 <th>Meteran Sekarang</th>
 <th>Total Pemakaian /M3</th>
-<th>Harga /M3</th>
+{{-- <th>Harga /M3</th> --}}
 <th>Total Tagihan Bulan ini</th>
 <th>Tunggakan Sebelumnya</th>
 <th>Diskon %</th>
 <th>Total Tagihan</th>
 <th>Status Tagihan</th>
-<th>Tanggal</th>
+<th>Tanggal input</th>
+<th>Bulan Penagihan</th>
 
                         <th>&nbsp;</th>
                     </tr>
@@ -38,23 +40,32 @@
                             <td>
                                 {!! Form::checkbox('del-'.$row->id,1,false,['class' => 'single','data-id'=> $row->id]) !!}
                             </td>
+                            <td>{{ $row->nama_petugas }}</td>
                             <td>{{ isset($row->datameteranpelanggan->nama) ? $row->datameteranpelanggan->nama : '' }}</td>
 <td>{{ $row->awal_meteran }}</td>
 <td>{{ $row->akhir_meteran }}</td>
 <td>{{ $row->total_pemakaian }}</td>
-<td>{{ $row->harga }}</td>
+{{-- <td>{{ $row->harga }}</td> --}}
 <td>{{ $row->total_tagihan_bulan_ini }}</td>
 <td>{{ $row->tunggakan_sebelumnya }}</td>
 <td>{{ $row->diskon }}</td>
 <td>{{ $row->total_tagihan }}</td>
 <td>{{ $row->status_tagihan }}</td>
 <td>{{ $row->created_at }}</td>
-
+<td><?php echo date("F", strtotime($row->created_at)); ?></td>
                             <td>
+                                {!! link_to_route('cetakresi', 'Cetak', array($row->id), array('class' => 'btn btn-xs btn-info','target'=>'_blank')) !!}
+                                <?php
+                                    if(Auth::user()->role_id <=2){
+                                ?>
                                 {!! link_to_route(config('quickadmin.route').'.tagihanblanan.edit', trans('quickadmin::templates.templates-view_index-edit'), array($row->id), array('class' => 'btn btn-xs btn-info')) !!}
                                 {!! Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'onsubmit' => "return confirm('".trans("quickadmin::templates.templates-view_index-are_you_sure")."');",  'route' => array(config('quickadmin.route').'.tagihanblanan.destroy', $row->id))) !!}
                                 {!! Form::submit(trans('quickadmin::templates.templates-view_index-delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                 {!! Form::close() !!}
+
+                                <?php
+                                }
+                                ?>
                             </td>
                         </tr>
                     @endforeach

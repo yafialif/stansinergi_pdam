@@ -3,7 +3,7 @@
         <div class="page-header-inner">
             <div class="navbar-header">
                 <a href="{{ url(config('quickadmin.homeRoute')) }}" class="navbar-brand">
-                   PDAM
+                   STAN Sinergi Aplikasi PDAM
                 </a>
             </div>
             <a href="javascript:;"

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-        PDAM
+        STAN Sinergi
     </title>
 
     <meta http-equiv="X-UA-Compatible"

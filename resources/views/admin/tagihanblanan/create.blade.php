@@ -17,14 +17,21 @@
 </div>
 
 {!! Form::open(array('route' => config('quickadmin.route').'.tagihanblanan.store', 'id' => 'form-with-validation', 'class' => 'form-horizontal')) !!}
-
+<div class="form-group">
+    {!! Form::label('nama_petugas', 'Petugas*', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {{-- {!! Form::text('id_petugas', old('id_petugas'), array('class'=>'form-control','readonly'=>'true')) !!} --}}
+        {!! Form::text('nama_petugas', value(Auth::user()->name), array('class'=>'form-control', 'readonly'=>'true', 'innertext'=>'Some Text')) !!}
+        {!! Form::hidden('id_petugas', value(Auth::user()->id), array('class'=>'form-control', 'readonly'=>'true', 'type'=>'hidden', 'innertext'=>'Some Text')) !!}
+    </div>
+</div>
 <div class="form-group">
     {!! Form::label('datameteranpelanggan_id', 'Nama Pelanggan*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::select('datameteranpelanggan_id', $datameteranpelanggan, old('datameteranpelanggan_id'), array('class'=>'form-control js-example-basic-single', 'id'=>'selectOptions')) !!}
-        
     </div>
-</div><div class="form-group">
+</div>
+<div class="form-group">
     {!! Form::label('awal_meteran', 'Meteran Sebelumnya*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::text('awal_meteran', old('awal_meteran'), array('class'=>'form-control', 'readonly')) !!}
@@ -87,6 +94,15 @@
     </div>
 </div>
 
+</div><div class="form-group">
+    {!! Form::label('Lokasi anda', 'Lokasi anda', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-5">
+        {!! Form::text('latitude', old('latitude'), array('class'=>'form-control','id'=>'latitude','readonly'=>'true')) !!}
+    </div>
+    <div class="col-sm-5">
+        {!! Form::text('longitude', old('longitude'), array('class'=>'form-control','id'=>'longitude','readonly'=>'true')) !!}
+    </div>
+</div>
 <div class="form-group">
     <div class="col-sm-10 col-sm-offset-2">
       {!! Form::submit( trans('quickadmin::templates.templates-view_create-create') , array('class' => 'btn btn-primary')) !!}
@@ -187,6 +203,27 @@ $("#total_tagihan")[0].value =total_tagihan;
     
 }
 });
+
+if (navigator.geolocation) {
+  // Geolocation didukung oleh browser
+  navigator.geolocation.getCurrentPosition(function(position) {
+    // Mendapatkan koordinat geografis (latitude dan longitude)
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    // Lakukan sesuatu dengan koordinat geografis, misalnya tampilkan dalam console
+    console.log("Latitude: " + latitude);
+    console.log("Longitude: " + longitude);
+    $("#latitude")[0].value = latitude;
+    $("#longitude")[0].value = longitude;
+  }, function(error) {
+    // Terjadi kesalahan saat mendapatkan lokasi
+    console.error("Kesalahan: " + error.message);
+  });
+} else {
+  // Geolocation tidak didukung oleh browser
+  console.error("Geolocation tidak didukung oleh browser.");
+}
 
 </script>
 @endsection

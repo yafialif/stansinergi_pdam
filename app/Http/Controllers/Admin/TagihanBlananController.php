@@ -11,20 +11,29 @@ use App\Http\Requests\UpdateTagihanBlananRequest;
 use Illuminate\Http\Request;
 
 use App\DataMeteranPelanggan;
+use Illuminate\Support\Facades\Auth;
 
 
-class TagihanBlananController extends Controller {
+class TagihanBlananController extends Controller
+{
 
 	/**
 	 * Display a listing of tagihanblanan
 	 *
-     * @param Request $request
-     *
-     * @return \Illuminate\View\View
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\View\View
 	 */
 	public function index(Request $request)
-    {
-        $tagihanblanan = TagihanBlanan::with("datameteranpelanggan")->get();
+	{
+
+		$user_id = Auth::user()->id;
+		$role_id = Auth::user()->role_id;
+		if ($role_id <= 2) {
+			$tagihanblanan = TagihanBlanan::with("datameteranpelanggan")->get();
+		} else {
+			$tagihanblanan = TagihanBlanan::with("datameteranpelanggan")->where('id_petugas', '=', $user_id)->get();
+		}
 
 		return view('admin.tagihanblanan.index', compact('tagihanblanan'));
 	}
@@ -32,59 +41,59 @@ class TagihanBlananController extends Controller {
 	/**
 	 * Show the form for creating a new tagihanblanan
 	 *
-     * @return \Illuminate\View\View
+	 * @return \Illuminate\View\View
 	 */
 	public function create()
 	{
-	    $datameteranpelanggan = DataMeteranPelanggan::pluck("nama", "id")->prepend('Please select', 0);
+		$datameteranpelanggan = DataMeteranPelanggan::pluck("nama", "id")->prepend('Please select', 0);
 
-	    
-	    return view('admin.tagihanblanan.create', compact("datameteranpelanggan"));
+
+		return view('admin.tagihanblanan.create', compact("datameteranpelanggan"));
 	}
 
 	/**
 	 * Store a newly created tagihanblanan in storage.
 	 *
-     * @param CreateTagihanBlananRequest|Request $request
+	 * @param CreateTagihanBlananRequest|Request $request
 	 */
 	public function store(CreateTagihanBlananRequest $request)
 	{
-	    
+
 		TagihanBlanan::create($request->all());
 
-		return redirect()->route(config('quickadmin.route').'.tagihanblanan.index');
+		return redirect()->route(config('quickadmin.route') . '.tagihanblanan.index');
 	}
 
 	/**
 	 * Show the form for editing the specified tagihanblanan.
 	 *
 	 * @param  int  $id
-     * @return \Illuminate\View\View
+	 * @return \Illuminate\View\View
 	 */
 	public function edit($id)
 	{
 		$tagihanblanan = TagihanBlanan::find($id);
-	    $datameteranpelanggan = DataMeteranPelanggan::pluck("nama", "id")->prepend('Please select', 0);
+		$datameteranpelanggan = DataMeteranPelanggan::pluck("nama", "id")->prepend('Please select', 0);
 
-	    
+
 		return view('admin.tagihanblanan.edit', compact('tagihanblanan', "datameteranpelanggan"));
 	}
 
 	/**
 	 * Update the specified tagihanblanan in storage.
-     * @param UpdateTagihanBlananRequest|Request $request
-     *
+	 * @param UpdateTagihanBlananRequest|Request $request
+	 *
 	 * @param  int  $id
 	 */
 	public function update($id, UpdateTagihanBlananRequest $request)
 	{
 		$tagihanblanan = TagihanBlanan::findOrFail($id);
 
-        
+
 
 		$tagihanblanan->update($request->all());
 
-		return redirect()->route(config('quickadmin.route').'.tagihanblanan.index');
+		return redirect()->route(config('quickadmin.route') . '.tagihanblanan.index');
 	}
 
 	/**
@@ -96,25 +105,23 @@ class TagihanBlananController extends Controller {
 	{
 		TagihanBlanan::destroy($id);
 
-		return redirect()->route(config('quickadmin.route').'.tagihanblanan.index');
+		return redirect()->route(config('quickadmin.route') . '.tagihanblanan.index');
 	}
 
-    /**
-     * Mass delete function from index page
-     * @param Request $request
-     *
-     * @return mixed
-     */
-    public function massDelete(Request $request)
-    {
-        if ($request->get('toDelete') != 'mass') {
-            $toDelete = json_decode($request->get('toDelete'));
-            TagihanBlanan::destroy($toDelete);
-        } else {
-            TagihanBlanan::whereNotNull('id')->delete();
-        }
-
-        return redirect()->route(config('quickadmin.route').'.tagihanblanan.index');
-    }
-
+	/**
+	 * Mass delete function from index page
+	 * @param Request $request
+	 *
+	 * @return mixed
+	 */
+	public function massDelete(Request $request)
+	{
+		if ($request->get('toDelete') != 'mass') {
+			$toDelete = json_decode($request->get('toDelete'));
+			TagihanBlanan::destroy($toDelete);
+		} else {
+			TagihanBlanan::whereNotNull('id')->delete();
+		}
+		return redirect()->route(config('quickadmin.route') . '.tagihanblanan.index');
+	}
 }

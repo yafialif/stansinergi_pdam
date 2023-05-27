@@ -24,19 +24,44 @@
         {!! Form::text('nama', old('nama'), array('class'=>'form-control')) !!}
         
     </div>
-</div><div class="form-group">
+</div>
+<div class="form-group">
     {!! Form::label('no_meteran', 'Nomor Meteran*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::text('no_meteran', old('no_meteran'), array('class'=>'form-control')) !!}
         
     </div>
-</div><div class="form-group">
+</div>
+<div class="form-group">
     {!! Form::label('start_meteran', 'Start Meteran*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::text('start_meteran', old('start_meteran'), array('class'=>'form-control')) !!}
         
     </div>
-</div><div class="form-group">
+</div>
+<div class="form-group">
+    {!! Form::label('rt', 'rt', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('rt', old('rt'), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    <div class="form-group">
+    {!! Form::label('rw', 'rw', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('rw', old('rw'), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('alamat', 'Alamat / No Rumah', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('alamat', old('alamat'), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+
     {!! Form::label('catatan', 'catatan', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::textarea('catatan', old('catatan'), array('class'=>'form-control ckeditor')) !!}

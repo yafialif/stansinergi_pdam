@@ -145,20 +145,27 @@ class DataMeteranPelangganController extends Controller
 
 		$pdf = new CustomTCPDF();
 		$pdf->SetCustomPageSize(80, 50); // Atur ukuran kertas 80 x 50 (dalam satuan mm)
-		$pdf->SetFont('helvetica', '', 12);
+		$pdf->SetFont('helvetica', '', 10);
 
 		// Add a page
 
 		// Tampilkan judul
 		$pdf->Cell(0, 10, 'Bukti Pembayaran PDAM', 0, 1, 'C');
+
 		$pdf->SetFont('helvetica', '', 8);
 		// Tampilkan informasi pembayaran
+		$pdf->Cell(30, 5, 'Petugas', 0, 0);
+		$pdf->Cell(0, 5, ': 3434535', 0, 1);
 		$pdf->Cell(30, 5, 'Nomor Pelanggan', 0, 0);
 		$pdf->Cell(0, 5, ': 3434535', 0, 1);
 
 		$pdf->Cell(30, 5, 'Tanggal Pembayaran', 0, 0);
 		$pdf->Cell(0, 5, ': 234234', 0, 1);
 
+		$pdf->Cell(30, 5, 'Bulan Tagihan', 0, 0);
+		$pdf->Cell(0, 5, ': 23234234', 0, 1);
+		$pdf->Cell(30, 5, 'Status Tagihan', 0, 0);
+		$pdf->Cell(0, 5, ': 23234234', 0, 1);
 		$pdf->Cell(30, 5, 'Jumlah Pembayaran', 0, 0);
 		$pdf->Cell(0, 5, ': 234234', 0, 1);
 
@@ -171,6 +178,8 @@ class DataMeteranPelangganController extends Controller
 		$pdf->Cell(30, 5, 'Alamat Pelanggan', 0, 0);
 		$pdf->Cell(0, 5, ': 23234234', 0, 1);
 
+		$imagePath = public_path('images/lunas.png'); // Ganti dengan path gambar logo Anda
+		$pdf->Image($imagePath, 10, $pdf->GetY() + 10, 20);
 		// Output file PDF
 		$pdf->Output('bukti_pembayaran.pdf', 'I');
 	}

@@ -29,7 +29,11 @@ class TagihanBlanan extends Model
         'total_tagihan',
         'status_tagihan',
         'bulan_tagihan',
-        'catatan'
+        'catatan',
+        'nama_petugas',
+        'latitude',
+        'longitude',
+        'id_petugas'
     ];
 
 

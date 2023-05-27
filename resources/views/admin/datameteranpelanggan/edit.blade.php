@@ -36,7 +36,29 @@
         {!! Form::text('start_meteran', old('start_meteran',$datameteranpelanggan->start_meteran), array('class'=>'form-control')) !!}
         
     </div>
-</div><div class="form-group">
+</div>
+<div class="form-group">
+    {!! Form::label('rt', 'rt', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('rt', old('rt',$datameteranpelanggan->rt), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('rw', 'rw*', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('rw', old('rw',$datameteranpelanggan->rw), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('alamat', 'Alamat*', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('alamat', old('alamat',$datameteranpelanggan->alamat), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
     {!! Form::label('catatan', 'catatan', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::textarea('catatan', old('catatan',$datameteranpelanggan->catatan), array('class'=>'form-control ckeditor')) !!}

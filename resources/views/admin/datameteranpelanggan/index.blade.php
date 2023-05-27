@@ -19,6 +19,9 @@
                         <th>Nama Pemilik</th>
 <th>Nomor Meteran</th>
 <th>Start Meteran</th>
+<th>RT</th>
+<th>RW</th>
+<th>No Rumah/Alamat</th>
 
                         <th>&nbsp;</th>
                     </tr>
@@ -33,6 +36,9 @@
                             <td>{{ $row->nama }}</td>
 <td>{{ $row->no_meteran }}</td>
 <td>{{ $row->start_meteran }}</td>
+<td>{{ $row->rt }}</td>
+<td>{{ $row->rw }}</td>
+<td>{{ $row->alamat }}</td>
 
                             <td>
                                 {!! link_to_route(config('quickadmin.route').'.datameteranpelanggan.edit', trans('quickadmin::templates.templates-view_index-edit'), array($row->id), array('class' => 'btn btn-xs btn-info')) !!}
