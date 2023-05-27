@@ -46,7 +46,7 @@
 </div><div class="form-group">
     {!! Form::label('total_pemakaian', 'Total Pemakaian /M3*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
-        {!! Form::text('total_pemakaian', old('total_pemakaian'), array('class'=>'form-control')) !!}
+        {!! Form::text('total_pemakaian', old('total_pemakaian'), array('class'=>'form-control','readonly'=>'true')) !!}
         
     </div>
 </div><div class="form-group">
