@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Solid Template</title>
+    <title>Aplikasi Tagihan Air STAN Sinergi</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/style.css">
 	<script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
@@ -75,7 +75,7 @@
 						<h3 class="section-title mt-0">Support By STAN Sinergi</h3>
 						<div class="cta-cta">
 							<div class="logo">
-                    <img src="{{ asset('images/logo_stan.png') }}" width="100px" alt="Example Image">
+                    <img style="display: inline;" src="{{ asset('images/logo_stan.png') }}" width="100px" alt="Example Image">
                 </div>
 						</div>
 					</div>
