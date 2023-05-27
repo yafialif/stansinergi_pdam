@@ -191,7 +191,7 @@ $("#harga")[0].value = price1+price2+price3+price4;
 $("#total_pemakaian")[0].value = total_meteran;
 $("#total_tagihan_bulan_ini")[0].value = cost;
 var diskon = $("#diskon")[0].value;
-var total_tagihan = parseInt((total_meteran*harga))+parseInt(tunggakan_sebelumnya);
+var total_tagihan = parseInt(cost)+parseInt(tunggakan_sebelumnya);
 if(diskon>=1){
 $("#total_tagihan")[0].value = total_tagihan-(total_tagihan*diskon/100);
 }
