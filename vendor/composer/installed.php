@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '3572ad15cc4654ec6bbef004fd96e346735ae6fa',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -373,6 +373,15 @@
             'reference' => '5707d5821b30b9a07acfb4d76949784aaa0e9ce9',
             'dev_requirement' => false,
         ),
+        'knplabs/knp-snappy' => array(
+            'pretty_version' => 'v1.4.2',
+            'version' => '1.4.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../knplabs/knp-snappy',
+            'aliases' => array(),
+            'reference' => 'b66f79334421c26d9c244427963fa2d92980b5d3',
+            'dev_requirement' => false,
+        ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -398,12 +407,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '3572ad15cc4654ec6bbef004fd96e346735ae6fa',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
@@ -1212,6 +1221,15 @@
             'install_path' => __DIR__ . '/../tijsverkoyen/css-to-inline-styles',
             'aliases' => array(),
             'reference' => 'c42125b83a4fa63b187fdf29f9c93cb7733da30c',
+            'dev_requirement' => false,
+        ),
+        'tjgazel/laravel-fpdf' => array(
+            'pretty_version' => 'v1.1.2',
+            'version' => '1.1.2.0',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../tjgazel/laravel-fpdf',
+            'aliases' => array(),
+            'reference' => 'eeac42b6af4dc44027bdfd984ca81bef98c430df',
             'dev_requirement' => false,
         ),
         'vlucas/phpdotenv' => array(

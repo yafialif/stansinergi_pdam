@@ -47,7 +47,6 @@
     </div>
 </div>
 <div class="form-group">
-    <div class="form-group">
     {!! Form::label('rw', 'rw', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::text('rw', old('rw'), array('class'=>'form-control')) !!}
@@ -62,6 +61,42 @@
     </div>
 </div>
 
+<div class="form-group">
+    {!! Form::label('dusun', 'Dusun', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        <select class="form-control" name="dusun">
+            <option value="Babakan">Babakan</option>
+            <option value="Pangkalan">Pangkalan</option>
+            <option value="Gondosoli">Gondosoli</option>
+        </select>
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('Desa', 'Desa', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('desa', old('desa'), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('wa', 'HP/WA', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('wa', old('wa'), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('jenis_saluran', 'Dusun', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        <select class="form-control" name="jenis_saluran">
+            <option value="Pompa">Pompa</option>
+            <option value="Gravitasi">Gravitasi</option>
+        </select>
+        
+    </div>
+</div>
+<div class="form-group">
     {!! Form::label('catatan', 'catatan', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::textarea('catatan', old('catatan'), array('class'=>'form-control ckeditor')) !!}

@@ -83,10 +83,18 @@
     {!! Form::label('status_tagihan', 'Status Tagihan*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {{-- {!! Form::text('status_tagihan', old('status_tagihan'), array('class'=>'form-control')) !!} --}}
-        {!! Form::select('status_tagihan', ['' => 'Pilih salah satu','lunas' => 'Lunas', 'belum_lunas' => 'Belum Lunas'], old('status_tagihan'), ['class' => 'form-control','required'=>'true']) !!}
+        {!! Form::select('status_tagihan', ['' => 'Pilih salah satu','lunas' => 'Lunas', 'belum_lunas' => 'Belum Lunas', 'sebagian' => 'Bayar Sebagian'], old('status_tagihan'), ['class' => 'form-control','required'=>'true' , 'id'=>'status_tagihan']) !!}
 
     </div>
-</div><div class="form-group">
+</div>
+<div class="form-group" id='terbayar'>
+    {!! Form::label('terbayar', 'Terbayar', array('class'=>'col-sm-2 control-label', )) !!}
+    <div class="col-sm-10">
+        {!! Form::text('terbayar', old('terbayar'), array('class'=>'form-control','id'=>'bayar')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
     {!! Form::label('catatan', 'catatan', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::textarea('catatan', old('catatan'), array('class'=>'form-control')) !!}
@@ -123,6 +131,9 @@ $(document).ready(function() {
 $(document).ready(function() {
   // Tangkap peristiwa perubahan pada elemen select
   var start_meteran = 0;
+  var jenis_pelanggan="";
+  var bayar = 0;
+   $('#terbayar').hide();
   const baseUrl = window.location.origin;
   $('.js-example-basic-single').on('change', function() {
     // Ambil nilai yang dipilih
@@ -136,13 +147,21 @@ var settings = {
     "Cookie": "XSRF-TOKEN=eyJpdiI6IlFwQitPaVFNM0tBVWRlRjJwUFA1ZXc9PSIsInZhbHVlIjoiTHRVQUxSV2pxd2RpQmlFVm9qNjFvVGFBNjJVMnVnSDhvUkZIeFc1dVZiRjgzYXl1NGJyeGw5QlFiVjNuamFUViIsIm1hYyI6IjlhYjhlMzIwNDVkZjY0YzIwYmZlMTVkOGVhMjdmYWE1NDljOGY1ZGYxMjA5ZjA4OGVhNGE5MDE1NmU3ZDY1NTkifQ%3D%3D; laravel_session=eyJpdiI6Imk4eE9STVwvaWkxYjNNNllMYzhuZDRRPT0iLCJ2YWx1ZSI6ImZQTXJ0OVhPOHJUU3htdDRtazBoRTNVTEZPeHZ2WmVGM1FLZkNhblp3cXhEd25LXC80OEd0VTVQQ3V2UjVnN1VMIiwibWFjIjoiYzlhNDE2OGFhYzAzNmE4ZTQ2ODFmMTJhYjE3Y2Q3OTJiM2FmNWYxMTBiZjJlMzY0YTMxNmNjNjM2OGJkN2RkMiJ9"
   },
 };
+
 // on keyup count meteran
 $.ajax(settings).done(function (response) {
   console.log(response);
+  if(!response.jenis_pelanggan){
+    alert("Silahkan edit data jenis pelanggan terlebih dahulu");
+  }
+  else{
     start_meteran = response.start_meteran;
   $("#awal_meteran")[0].value = response.start_meteran;
   $("#tunggakan_sebelumnya")[0].value = response.tunggakan;
+    jenis_pelanggan = response.jenis_pelanggan;
    hitung();
+  }
+    
 });
   });
 // on keyup count meteran
@@ -152,6 +171,17 @@ $.ajax(settings).done(function (response) {
 
     $('#diskon').on('keyup', function() {
         hitung();
+  });
+  $('#status_tagihan').on('change', function() {
+       if($('#status_tagihan')[0].value == 'sebagian'){
+         $('#terbayar').show();
+       }
+  else{
+     $('#terbayar').hide();
+  }
+  });
+  $('#bayar').on('keyup', function() {
+   hitung();
   });
 
 
@@ -165,6 +195,12 @@ function hitung(){
     var harga = 0;
     var tunggakan_sebelumnya = $("#tunggakan_sebelumnya")[0].value;
     let cost = 0;
+    if(jenis_pelanggan =='Pompa'){
+      cost = total_meteran * 2000;
+      $("#harga")[0].value = total_meteran+ " x 2000";
+     
+    }
+    else if(jenis_pelanggan =='Gravitasi'){
     var price1="",price2="",price3="",price4="";
     if (total_meteran <= 10) {
     cost = 20000;
@@ -183,15 +219,23 @@ function hitung(){
      price4 = "20.000 + (30 x 500) + (30 x 3000) + ("+additionalM3+" x 5000)";
     cost = 20000 + 30 * 500 + 30 * 3000 + additionalM3 * 5000;
   }
+  $("#harga")[0].value = price1+price2+price3+price4;
+
+    }
+    
   
 //   return cost;
 
 console.log(price1);
-$("#harga")[0].value = price1+price2+price3+price4;
+
 $("#total_pemakaian")[0].value = total_meteran;
 $("#total_tagihan_bulan_ini")[0].value = cost;
 var diskon = $("#diskon")[0].value;
-var total_tagihan = parseInt(cost)+parseInt(tunggakan_sebelumnya);
+bayar = parseInt($("#bayar")[0].value);
+if(!bayar){
+  bayar=0;
+}
+var total_tagihan = parseInt(cost)+parseInt(tunggakan_sebelumnya)-bayar;
 if(diskon>=1){
 $("#total_tagihan")[0].value = total_tagihan-(total_tagihan*diskon/100);
 }

@@ -51,6 +51,7 @@ class ComposerStaticInit5d27cfc741aec52029bc7439d6337573
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tests\\' => 6,
+            'TJGazel\\LaraFpdf\\' => 17,
         ),
         'S' => 
         array (
@@ -116,6 +117,10 @@ class ComposerStaticInit5d27cfc741aec52029bc7439d6337573
             'League\\Flysystem\\' => 17,
             'Laraveldaily\\Quickadmin\\' => 24,
             'Laravel\\Tinker\\' => 15,
+        ),
+        'K' => 
+        array (
+            'Knp\\Snappy\\' => 11,
         ),
         'J' => 
         array (
@@ -198,6 +203,10 @@ class ComposerStaticInit5d27cfc741aec52029bc7439d6337573
         'Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
+        ),
+        'TJGazel\\LaraFpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tjgazel/laravel-fpdf/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -376,6 +385,10 @@ class ComposerStaticInit5d27cfc741aec52029bc7439d6337573
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Knp\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+        ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src',
@@ -525,7 +538,10 @@ class ComposerStaticInit5d27cfc741aec52029bc7439d6337573
         'App\\Http\\Controllers\\Admin\\DataMeteranPelangganController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DataMeteranPelangganController.php',
         'App\\Http\\Controllers\\Admin\\HargaPerMeter2Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HargaPerMeter2Controller.php',
         'App\\Http\\Controllers\\Admin\\HargaPerMeter3AirController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HargaPerMeter3AirController.php',
+        'App\\Http\\Controllers\\Admin\\ReportTagihanController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReportTagihanController.php',
+        'App\\Http\\Controllers\\Admin\\ReportTagihanPelangganController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReportTagihanPelangganController.php',
         'App\\Http\\Controllers\\Admin\\TagihanBlananController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TagihanBlananController.php',
+        'App\\Http\\Controllers\\Admin\\TunggakanAirController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TunggakanAirController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -2385,6 +2401,11 @@ class ComposerStaticInit5d27cfc741aec52029bc7439d6337573
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src/Highlighter.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
+        'Knp\\Snappy\\AbstractGenerator' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/AbstractGenerator.php',
+        'Knp\\Snappy\\Exception\\FileAlreadyExistsException' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Exception/FileAlreadyExistsException.php',
+        'Knp\\Snappy\\GeneratorInterface' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/GeneratorInterface.php',
+        'Knp\\Snappy\\Image' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Image.php',
+        'Knp\\Snappy\\Pdf' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Pdf.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -4901,6 +4922,9 @@ class ComposerStaticInit5d27cfc741aec52029bc7439d6337573
         'TCPDF_IMPORT' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_import.php',
         'TCPDF_PARSER' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_parser.php',
         'TCPDF_STATIC' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_static.php',
+        'TJGazel\\LaraFpdf\\Facades\\LaraFpdf' => __DIR__ . '/..' . '/tjgazel/laravel-fpdf/src/Facades/LaraFpdf.php',
+        'TJGazel\\LaraFpdf\\LaraFpdf' => __DIR__ . '/..' . '/tjgazel/laravel-fpdf/src/LaraFpdf.php',
+        'TJGazel\\LaraFpdf\\LaraFpdfServiceProvider' => __DIR__ . '/..' . '/tjgazel/laravel-fpdf/src/LaraFpdfServiceProvider.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',

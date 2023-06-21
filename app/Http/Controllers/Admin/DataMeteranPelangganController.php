@@ -123,20 +123,34 @@ class DataMeteranPelangganController extends Controller
 			->orderBy('created_at', 'desc')
 			->limit(1)
 			->get();
+		$datameteranpelanggan = DataMeteranPelanggan::find($id);
 		if (count($tagihanbulanan) < 1) {
-			$datameteranpelanggan = DataMeteranPelanggan::find($id);
 			$start_meteran = $datameteranpelanggan->start_meteran;
 		} else {
 			$start_meteran = $tagihanbulanan[0]->akhir_meteran;
-			if ($tagihanbulanan[0]->status_tagihan == "belum_lunas") {
+			if ($tagihanbulanan[0]->status_tagihan != "lunas") {
 				$tunggakan = $tagihanbulanan[0]->total_tagihan;
 			}
 		}
-
 		$data = array(
 			'start_meteran' => $start_meteran,
-			'tunggakan' => $tunggakan
+			'tunggakan' => $tunggakan,
+			'jenis_pelanggan' => $datameteranpelanggan->jenis_saluran
 		);
+		return response()->json($data);
+	}
+	public function ReportTagihanByPelanggan()
+	{
+		$data = TagihanBlanan::with("datameteranpelanggan")->where('status_tagihan', '=', 'belum_lunas')->get();
+	}
+	public function ReportTagihanByDate($startDate, $endDate)
+	{
+		// return $endDate;
+		$startDate = \Carbon\Carbon::parse($startDate)->format('Y-m-d');
+		$endDate = \Carbon\Carbon::parse($endDate)->format('Y-m-d');
+		$data = TagihanBlanan::with("datameteranpelanggan")->where('status_tagihan', '=', 'belum_lunas')
+			->whereBetween('created_at', [$startDate, $endDate])
+			->get();
 		return response()->json($data);
 	}
 	public function cetakresi($id)
@@ -150,8 +164,11 @@ class DataMeteranPelangganController extends Controller
 		// Add a page
 
 		// Tampilkan judul
-		$pdf->Cell(0, 10, 'Bukti Pembayaran PDAM', 0, 1, 'C');
-
+		if ($tagihan->status_tagihan == "lunas") {
+			$pdf->Cell(0, 10, 'Bukti Pembayaran PDAM', 0, 1, 'C');
+		} else {
+			$pdf->Cell(0, 10, 'Tagihan Pembayaran PDAM', 0, 1, 'C');
+		}
 		$pdf->SetFont('helvetica', '', 7);
 		// Tampilkan informasi pembayaran
 		$pdf->Cell(25, 5, 'Petugas', 0, 0);
@@ -162,27 +179,27 @@ class DataMeteranPelangganController extends Controller
 			$pdf->Cell(25, 5, 'Tanggal Pembayaran', 0, 0);
 			$pdf->Cell(0, 5, ': ' . $tagihan->created_at, 0, 1);
 		}
-
 		$pdf->Cell(25, 5, 'Bulan Tagihan', 0, 0);
 		$pdf->Cell(0, 5, ': ' . date("F", strtotime($tagihan->bulan_tagihan)), 0, 1);
 		$pdf->Cell(25, 5, 'Status Tagihan', 0, 0);
 		$pdf->Cell(0, 5, ': ' . $tagihan->status_tagihan, 0, 1);
-		$pdf->Cell(25, 5, 'Jumlah Pembayaran', 0, 0);
-		$pdf->Cell(0, 5, ': ' . $tagihan->total_tagihan, 0, 1);
-
+		if ($tagihan->status_tagihan == "lunas") {
+			$pdf->Cell(25, 5, 'Terbayar', 0, 0);
+			$pdf->Cell(0, 5, ': ' . $tagihan->total_tagihan, 0, 1);
+		} else {
+			$pdf->Cell(25, 5, 'Tagihan', 0, 0);
+			$pdf->Cell(0, 5, ': ' . $tagihan->total_tagihan, 0, 1);
+		}
 		// Tampilkan informasi pelanggan
 		$pdf->Cell(0, 5, 'Informasi Pelanggan', 0, 1, 'B');
-
 		$pdf->Cell(25, 5, 'Nama Pelanggan', 0, 0);
 		$pdf->Cell(0, 5, ': ' . $tagihan->nama, 0, 1);
-
 		$pdf->Cell(25, 5, 'Alamat Pelanggan', 0, 0);
 		$pdf->Cell(0, 5, ': ' . $tagihan->rt . '/' . $tagihan->rw . ' ' . $tagihan->alamat, 0, 1);
 		if ($tagihan->status_tagihan == "lunas") {
 			$imagePath = public_path('images/lunas.png'); // Ganti dengan path gambar logo Anda
 			$pdf->Image($imagePath, 15, $pdf->GetY() + 6, 20);
 		}
-
 		// Output file PDF
 		$pdf->Output('bukti_pembayaran_' . $tagihan->nama . '.pdf', 'I');
 	}

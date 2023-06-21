@@ -48,13 +48,46 @@
     {!! Form::label('rw', 'rw*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::text('rw', old('rw',$datameteranpelanggan->rw), array('class'=>'form-control')) !!}
-        
     </div>
 </div>
 <div class="form-group">
     {!! Form::label('alamat', 'Alamat*', array('class'=>'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
         {!! Form::text('alamat', old('alamat',$datameteranpelanggan->alamat), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('dusun', 'Dusun', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        <select class="form-control" name="dusun">
+            <option {{ $datameteranpelanggan->dusun == 'Babakan' ? 'selected' : ''}}  value="Babakan">Babakan</option>
+            <option {{ $datameteranpelanggan->dusun == 'Pangkalan' ? 'selected' : ''}} value="Pangkalan">Pangkalan</option>
+            <option {{ $datameteranpelanggan->dusun == 'Gondosoli' ? 'selected' : ''}} value="Gondosoli">Gondosoli</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('Desa', 'Desa', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('desa', old('desa',$datameteranpelanggan->desa), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('wa', 'HP/WA', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        {!! Form::text('wa', old('wa',$datameteranpelanggan->wa), array('class'=>'form-control')) !!}
+        
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('jenis_saluran', 'Dusun', array('class'=>'col-sm-2 control-label')) !!}
+    <div class="col-sm-10">
+        <select class="form-control" name="jenis_saluran">
+            <option {{ $datameteranpelanggan->jenis_saluran == 'Pompa' ? 'selected' : ''}} value="Pompa">Pompa</option>
+            <option {{ $datameteranpelanggan->jenis_saluran == 'Gravitasi' ? 'selected' : ''}} value="Gravitasi">Gravitasi</option>
+        </select>
         
     </div>
 </div>

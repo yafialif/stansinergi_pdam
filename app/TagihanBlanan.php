@@ -29,7 +29,8 @@ class TagihanBlanan extends Model
         'nama_petugas',
         'latitude',
         'longitude',
-        'id_petugas'
+        'id_petugas',
+        'status_storan'
     ];
 
 

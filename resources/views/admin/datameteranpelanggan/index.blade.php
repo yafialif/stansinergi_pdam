@@ -22,6 +22,10 @@
 <th>RT</th>
 <th>RW</th>
 <th>No Rumah/Alamat</th>
+<th>dusun</th>
+<th>Jenis Saluran</th>
+<th>desa</th>
+<th>WA</th>
 
                         <th>&nbsp;</th>
                     </tr>
@@ -39,7 +43,18 @@
 <td>{{ $row->rt }}</td>
 <td>{{ $row->rw }}</td>
 <td>{{ $row->alamat }}</td>
-
+<td>{{ $row->dusun }}</td>
+<td>{{ $row->jenis_saluran }}</td>
+<td>{{ $row->desa }}</td>
+<?php
+$phone_number = preg_replace('/\D/', '', $row->wa);
+if (substr($phone_number, 0, 1) === '0') {
+    $phone_number = '62' . substr($phone_number, 1);
+} elseif (substr($phone_number, 0, 3) === '+62') {
+    $phone_number = '62' . substr($phone_number, 3);
+}
+?>
+<td><a href="https://api.whatsapp.com/send?phone={{ $phone_number }}" target="_blank">{!! $row->wa !!}</a></td>
                             <td>
                                 {!! link_to_route(config('quickadmin.route').'.datameteranpelanggan.edit', trans('quickadmin::templates.templates-view_index-edit'), array($row->id), array('class' => 'btn btn-xs btn-info')) !!}
                                 {!! Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'onsubmit' => "return confirm('".trans("quickadmin::templates.templates-view_index-are_you_sure")."');",  'route' => array(config('quickadmin.route').'.datameteranpelanggan.destroy', $row->id))) !!}

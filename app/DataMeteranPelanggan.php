@@ -24,6 +24,10 @@ class DataMeteranPelanggan extends Model
         'rw',
         'rt',
         'alamat',
+        'dusun',
+        'desa',
+        'wa',
+        'jenis_saluran',
         'catatan'
     ];
 
