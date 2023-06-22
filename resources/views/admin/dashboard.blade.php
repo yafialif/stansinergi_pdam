@@ -2,7 +2,7 @@
 
 @section('content')
 
-   <h3>Aplikasi Tagihan Air desa Bumdes desa babakan</h3>
+   <h3>Aplikasi Tagihan Air</h3>
    <p><h4>Pengembangan aplikasi ini di dukung oleh</h4></p>
    <div class="logo">
                     <img src="{{ asset('images/logo_stan.png') }}" width="150px" alt="STAN">

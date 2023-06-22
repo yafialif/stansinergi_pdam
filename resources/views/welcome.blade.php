@@ -32,7 +32,7 @@
                     <div class="hero-inner">
 						<div class="hero-copy">
 	                        <h1 class="hero-title mt-0">Aplikasi Tagihan Air</h1>
-	                        <p class="hero-paragraph">Bumdes desa babakan sinergi</p>
+	                        <p class="hero-paragraph">Stan Sinergi</p>
 	                        <div class="hero-cta">
                                  @if (Route::has('login'))
                 <div class="top-right links">
